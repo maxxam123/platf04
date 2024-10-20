@@ -23,7 +23,7 @@ resource "aws_subnet" "RESOURCE_PUB_SUBNET" {
 resource "aws_subnet" "RESOURCE_PRI_SUBNET" {
   vpc_id     = aws_vpc.RESOURCE_VPC.id
   count = var.number
-  cidr_block = cidrsubnet(aws_vpc.RESOURCE_VPC, 8, count.index + 3 )
+  cidr_block = cidrsubnet(aws_vpc.RESOURCE_VPC.cidr_block, 8, count.index + 3 )
   availability_zone = "eu-central-1a"
 
   tags = {
