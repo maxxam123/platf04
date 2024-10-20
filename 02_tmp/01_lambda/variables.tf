@@ -3,3 +3,8 @@ variable "ec2" {
   type = string
   default = "aws200"
 }
+
+variable "number" {
+  description = "count number"
+  type = string
+}
