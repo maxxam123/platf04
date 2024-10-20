@@ -3,7 +3,7 @@ variable "vpc" {
   type = string
 }
 
-variable "count" {
+variable "number" {
   description = "count number"
   type = string
 }
