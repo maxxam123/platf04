@@ -1,10 +1,10 @@
-resource "aws_vpc" "RESOURCE" {
-  cidr_block = "10.0.0.0/16"
 
-  enable_dns_hostnames = true
-  enable_dns_support = true
-  
-  tags = {
-    Name = var.ec2
-  }
+resource "aws_instance" "EC2" {
+ ami = "ami-03a115bbd6928e698"
+ instance_type = "t2.micro"
+ count = var.number
+ 
+ tags = {
+  Name = "Instance ${count.index+1}"
+ }
 }
