@@ -1,10 +1,25 @@
-variable "ec2" {
-  description = "instance type name"
+variable "function" {
+  description = "function"
   type = string
   default = "aws200"
 }
 
-variable "number" {
-  description = "count number"
+variable "role" {
+  description = "role"
+  type = string
+}
+
+variable "runtime" {
+  description = "runtime"
+  type = string
+}
+
+variable "gateway" {
+  description = "gateway"
+  type = string
+}
+
+variable "path" {
+  description = "path"
   type = string
 }
