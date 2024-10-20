@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: 01_infra/lambda/lambda03/
+       working-directory: 01_infra/lambda/lambda01/
 
    steps:
      - name: Checkout the repository to the runner
@@ -32,7 +32,7 @@ jobs:
        id: init
        run: |
          cp ../../../02_tmp/01_lambda/* .
-         sed -i -e "s/RESOURCE/lambda03/g" main.tf
+         sed -i -e "s/RESOURCE/lambda01/g" main.tf
          cat main.tf
          terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
@@ -53,11 +53,11 @@ jobs:
          git clone https://github.com/maxxam123/platf04.git
          cd platf04/.github/workflows
          ls -la
-         rm -rf lambda03.yaml
+         rm -rf lambda01.yaml
          cd ../../../
          cd platf04/01_infra/lambda
          ls -la
-         rm -rf lambda03
+         rm -rf lambda01
          cd ../../..
 
      - name: Pushes to another repository
