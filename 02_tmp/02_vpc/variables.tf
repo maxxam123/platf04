@@ -1,4 +1,9 @@
 variable "vpc" {
-  description = "instance type name"
+  description = "vpc name"
+  type = string
+}
+
+variable "count" {
+  description = "count number"
   type = string
 }
