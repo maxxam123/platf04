@@ -31,5 +31,5 @@ variable "route_table" {
 variable "name" {
   description = "name"
   type = string
-  default = "vpc001"
+  default = "subnet_default"
 }
