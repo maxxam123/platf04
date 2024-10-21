@@ -7,8 +7,8 @@ data "archive_file" "Lambda_zip_file" {
 
 resource "aws_iam_role" "Lambda_role" {
   assume_role_policy = file("lambda-policy.json")
-  name = "test_role"
-  # name = var.role
+  # name = "test_role"
+  name = var.role
 }
 
 resource "aws_iam_role_policy_attachment" "Lambda_exec_role_attachment" {
@@ -17,27 +17,28 @@ resource "aws_iam_role_policy_attachment" "Lambda_exec_role_attachment" {
 }
 
 resource "aws_lambda_function" "yt_lambda_function" {
-  function_name = "lambda_function_name"
-  # function_name = var.function
+  # function_name = "lambda_function_name"
+  function_name = var.function
   filename      = "Lambda/index.js"
   role          = aws_iam_role.Lambda_role.arn
   handler       = "index.handler"
-  runtime = "nodejs20.x"
-  # runtime = var.runtime
+  #vruntime = "nodejs20.x"
+  runtime = var.runtime
   timeout = 30
   source_code_hash = data.archive_file.Lambda_zip_file.output_base64sha256
 
   environment {
     variables = {
       VIDEO_NAME = "Lambda Terraform Demo"
+      # var.VALULE = var.MSG
     }
   }
 }
 
 
 resource "aws_api_gateway_rest_api" "yt_api" {
-  name = "example-rest-api"
-  # name = var.gateway
+  # name = "example-rest-api"
+  name = var.gateway
   description = "test"
 
   endpoint_configuration {
@@ -47,8 +48,8 @@ resource "aws_api_gateway_rest_api" "yt_api" {
 
 resource "aws_api_gateway_resource" "yt_api_resource" {
   parent_id   = aws_api_gateway_rest_api.yt_api.root_resource_id
-  path_part   = "demo-paht"
-  # path_part = var.path
+  # path_part   = "demo-paht"
+  path_part = var.path
   rest_api_id = aws_api_gateway_rest_api.yt_api.id
 }
 
