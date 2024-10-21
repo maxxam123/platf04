@@ -1,7 +1,7 @@
 variable "vpc_id" {
   description = "vpc_id"
   type = string
-  default = "vpc-05d0697c7c1b161fc"
+  default = ""
 }
 
 variable "number" {
@@ -25,7 +25,7 @@ variable "az" {
 variable "route_table" {
   description = "route_table"
   type = string
-  default = "rtb-083365b57b330835e"
+  default = ""
 }
 
 variable "name" {
