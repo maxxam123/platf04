@@ -10,7 +10,7 @@ resource "aws_subnet" "pub_sn_multi" {
   availability_zone = var.az
 
   tags = {
-    Name = "${var.name}-${count.index+1}"
+    Name = "public ${var.name}-${count.index+1}"
   }
 }
 
