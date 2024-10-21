@@ -1,2 +1,2 @@
-vpc="vpc01"
-number="2"
+name="vpc01"
+number="1"
