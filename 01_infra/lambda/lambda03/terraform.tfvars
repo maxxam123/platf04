@@ -1,0 +1,5 @@
+function="function03"
+role="rolefunction03"
+runtime="nodejs20.x"
+gateway="gateway03"
+path="demopath"
