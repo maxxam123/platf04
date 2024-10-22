@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: 01_infra/01_lambda/lambda01/   ### 01_lambda == 01_lambda  
+       working-directory: 01_infra/02_vpc/vpc02/   ### 01_lambda == 02_vpc  
 
    steps:
      - name: Checkout the repository to the runner
@@ -31,16 +31,16 @@ jobs:
      - name: Terraform init
        # id: init
        run: |
-         cp ../../../02_tmp/01_lambda/* . 
-         sed -i -e "s/RESOURCE/lambda01/g" main.tf
+         cp ../../../02_tmp/02_vpc/* . 
+         sed -i -e "s/RESOURCE/vpc02/g" main.tf
          cat main.tf
 
                   cd ../../..
          git clone https://github.com/maxxam123/platf04.git
-         rm -rf platf04/.github/workflows/01_lambda-lambda01.yaml
-         rm -rf platf04/01_infra/01_lambda/lambda01
+         rm -rf platf04/.github/workflows/02_vpc-vpc02.yaml
+         rm -rf platf04/01_infra/02_vpc/vpc02
          echo "LAST........................."
-      # rm -rf platf04/.github/workflows/01_lambda01.yaml
+      # rm -rf platf04/.github/workflows/01_vpc02.yaml
      #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      #- name: Terraform Plan
@@ -70,11 +70,11 @@ jobs:
  #         git clone https://github.com/maxxam123/platf04.git
  #         cd platf04/.github/workflows
  #         ls -la
- #         rm -rf lambda01.yaml
+ #         rm -rf vpc02.yaml
  #         cd ../../../
  #         cd platf04/01_infra/01_lambda
  #         ls -la
- #         rm -rf lambda01
+ #         rm -rf vpc02
  #         cd ../../..
 
  #     - name: Pushes to another repository
