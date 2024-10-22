@@ -36,11 +36,11 @@ jobs:
          cat main.tf
        # terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
-     - name: Terraform Plan
-      run: terraform plan -lock=false
+     # - name: Terraform Plan
+     #  run: terraform plan -lock=false
 
-     - name: Terraform Destroy
-      run: terraform destroy -auto-approve -input=false -lock=false
+     # - name: Terraform Destroy
+     #  run: terraform destroy -auto-approve -input=false -lock=false
 
          cd ../../..
          git clone https://github.com/maxxam123/platf04.git
