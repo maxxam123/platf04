@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: 01_infra/03_subnet_pub/subnet_pub02/
+       working-directory: 01_infra/03_subnet_pub/subnet_pub01/
 
    steps:
      - name: Checkout the repository to the runner
@@ -32,13 +32,13 @@ jobs:
        id: init
        run: |
          cp ../../../02_tmp/03_subnet_pub/* .
-         sed -i -e "s/RESOURCE/subnet_pub02/g" main.tf
+         sed -i -e "s/RESOURCE/subnet_pub01/g" main.tf
          cat main.tf
 
          cd ../../..
          git clone https://github.com/maxxam123/platf04.git
-         rm -rf platf04/.github/workflows/subnet_pub02.yaml
-         rm -rf platf04/01_infra/03_subnet_pub/subnet_pub02
+         rm -rf platf04/.github/workflows/subnet_pub01.yaml
+         rm -rf platf04/01_infra/05_autoscaler/subnet_pub01
          echo "LAST........................."
      #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
@@ -70,11 +70,11 @@ jobs:
  #         git clone https://github.com/maxxam123/platf04.git
  #         cd platf04/.github/workflows
  #         ls -la
- #         rm -rf subnet_pub02.yaml
+ #         rm -rf subnet_pub01.yaml
  #         cd ../../../
  #         cd platf04/01_infra/03_subnet_pub
  #         ls -la
- #         rm -rf subnet_pub02
+ #         rm -rf subnet_pub01
  #         cd ../../..
 
  #     - name: Pushes to another repository
