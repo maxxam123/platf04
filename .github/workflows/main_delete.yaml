@@ -38,7 +38,7 @@ jobs:
          cd ../../..
          git clone https://github.com/maxxam123/platf04.git
          rm -rf platf04/.github/workflows/subnet_pub02.yaml
-         rm -rf platf04/01_infra/05_autoscaler/subnet_pub02
+         rm -rf platf04/01_infra/03_subnet_pub/subnet_pub02
          echo "LAST........................."
      #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
