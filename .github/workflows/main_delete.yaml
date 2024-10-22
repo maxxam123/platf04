@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: 01_infra/03_subnet_pub/subnet_pub02/
+       working-directory: 01_infra/01_lambda/lambda02/
 
    steps:
      - name: Checkout the repository to the runner
@@ -31,14 +31,14 @@ jobs:
      - name: Terraform init
        id: init
        run: |
-         cp ../../../02_tmp/03_subnet_pub/* .
-         sed -i -e "s/RESOURCE/subnet_pub02/g" main.tf
+         cp ../../../02_tmp/01_lambda/* .
+         sed -i -e "s/RESOURCE/lambda02/g" main.tf
          cat main.tf
 
-         cd ../../..
+                  cd ../../..
          git clone https://github.com/maxxam123/platf04.git
-         rm -rf platf04/.github/workflows/subnet_pub02.yaml
-         rm -rf platf04/01_infra/03_subnet_pub/subnet_pub02
+         rm -rf platf04/.github/workflows/lambda02.yaml
+         rm -rf platf04/01_infra/01_lambda/lambda02
          echo "LAST........................."
      #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
@@ -47,7 +47,6 @@ jobs:
 
      #- name: Terraform Destroy
      #  run: terraform destroy -auto-approve -input=false -lock=false
-
      - name: Pushes to another repository
        uses: cpina/github-action-push-to-another-repository@main
        env:
@@ -70,11 +69,11 @@ jobs:
  #         git clone https://github.com/maxxam123/platf04.git
  #         cd platf04/.github/workflows
  #         ls -la
- #         rm -rf subnet_pub02.yaml
+ #         rm -rf lambda02.yaml
  #         cd ../../../
- #         cd platf04/01_infra/03_subnet_pub
+ #         cd platf04/01_infra/01_lambda
  #         ls -la
- #         rm -rf subnet_pub02
+ #         rm -rf lambda02
  #         cd ../../..
 
  #     - name: Pushes to another repository
