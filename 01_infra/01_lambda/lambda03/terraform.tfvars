@@ -1,5 +1,0 @@
-function="function01"
-role="rolefunction01"
-runtime="nodejs20.x"
-gateway="gateway01"
-path="demopath"
