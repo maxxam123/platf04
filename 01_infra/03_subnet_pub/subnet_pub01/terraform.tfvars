@@ -1,0 +1,6 @@
+name="subnet_pub01"
+vpc_id="vpc-04cfa00a6fe95e10d"
+number="2"
+subnet="1"
+az="eu-central-1a"
+route_table="rtb-0ff6628b284fbf848"
