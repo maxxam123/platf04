@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: 01_infra/05_autoscaler/autoscaler02/
+       working-directory: 01_infra/05_autoscaler/autoscaler01/
 
    steps:
      - name: Checkout the repository to the runner
@@ -32,8 +32,14 @@ jobs:
        # id: init
        run: |
          cp ../../../02_tmp/05_autoscaler/* .
-         sed -i -e "s/RESOURCE/autoscaler02/g" main.tf
+         sed -i -e "s/RESOURCE/autoscaler01/g" main.tf
          cat main.tf
+
+         cd ../../..
+         git clone https://github.com/maxxam123/platf04.git
+         rm -rf platf04/.github/workflows/autoscaler01.yaml
+         rm -rf platf04/01_infra/05_autoscaler/autoscaler01
+         echo "LAST........................."
        # terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      # - name: Terraform Plan
@@ -41,12 +47,6 @@ jobs:
 
      # - name: Terraform Destroy
      #  run: terraform destroy -auto-approve -input=false -lock=false
-
-         cd ../../..
-         git clone https://github.com/maxxam123/platf04.git
-         rm -rf platf04/.github/workflows/autoscaler02.yaml
-         rm -rf platf04/01_infra/05_autoscaler/autoscaler02
-         echo "LAST........................."
      
      - name: Pushes to another repository
        uses: cpina/github-action-push-to-another-repository@main
@@ -70,11 +70,11 @@ jobs:
  #         git clone https://github.com/maxxam123/platf04.git
  #         cd platf04/.github/workflows
  #         ls -la
- #         rm -rf autoscaler02.yaml
+ #         rm -rf autoscaler01.yaml
  #         cd ../../../
  #         cd platf04/01_infra/05_autoscaler
  #         ls -la
- #         rm -rf autoscaler02
+ #         rm -rf autoscaler01
  #         cd ../../..
 
  #     - name: Pushes to another repository
