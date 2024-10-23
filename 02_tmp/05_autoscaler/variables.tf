@@ -1,3 +1,8 @@
+variable "name" {
+  description = "name"
+  type = string
+  default = "autoscaler100"
+}
 
 variable "vpc_id" {
   type        = "string"
