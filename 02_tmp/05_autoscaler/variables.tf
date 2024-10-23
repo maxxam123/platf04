@@ -1,6 +1,12 @@
 variable "name" {
   description = "name"
   type = string
+  default = "eks100"
+}
+
+variable "name" {
+  description = "name"
+  type = string
   default = "autoscaler100"
 }
 
