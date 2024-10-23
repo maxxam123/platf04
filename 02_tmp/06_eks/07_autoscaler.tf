@@ -62,27 +62,3 @@ resource "aws_eks_pod_identity_association" "cluster-autoscaler" {
   service_account = "cluster-autoscaler"
   role_arn        = aws_iam_role.cluster_autoscaler.arn
 }
-
-resource "helm_release" "cluster-autoscaler" {
-  name       = "autoscaler"
-  repository = "https://kubernetes.github.io/autoscaler"
-  chart      = "cluster-autoscaler"
-  namespace = "kube-system"
-  version    = "9.37.0"
-
-  set {
-    name  = "rbac.serviceAccount.name"
-    value = "cluster-autoscaler"
-  }
-  
-  set {
-    name  = "autoDiscovery.clusterName"
-    value = aws_eks_cluster.eks.name
-  }
-  
-  set {
-    name  = "awsRegion"
-    value = "eu-central-1"
-  }
-}
-
