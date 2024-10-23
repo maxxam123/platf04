@@ -1,4 +1,10 @@
 variable "name" {
+  description = "name"
+  type = string
+  default = "vpc100"
+}
+
+variable "name" {
   description = "vpc name"
   type = string
 }
