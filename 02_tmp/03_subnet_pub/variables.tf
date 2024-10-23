@@ -1,6 +1,12 @@
 variable "name" {
   description = "name"
   type = string
+  default = "subnet_pri100"
+}
+
+variable "name" {
+  description = "name"
+  type = string
   default = "subnet_pub100"
 }
 
