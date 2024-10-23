@@ -1,3 +1,9 @@
+variable "name" {
+  description = "name"
+  type = string
+  default = "lmabda100"
+}
+
 variable "function" {
   description = "function"
   type = string
