@@ -1,3 +1,9 @@
+variable "name" {
+  description = "name"
+  type = string
+  default = "subnet_pub100"
+}
+
 variable "vpc_id" {
   description = "vpc_id"
   type = string
