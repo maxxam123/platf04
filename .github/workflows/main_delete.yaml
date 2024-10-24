@@ -1,0 +1,70 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - '05_trig/trigger.yaml'
+
+env:
+ AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+ AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+
+jobs:
+ terraform:
+   name: "Terraform Infrastructure Change Management"
+   runs-on: ubuntu-latest
+   defaults:
+     run:
+       shell: bash
+       # We keep Terraform files in the terraform directory.
+       working-directory: 01_infra/10_eks/aws/02_aws_eks/  ### 01_lambda == 10_eks  
+
+   steps:
+     - name: Checkout the repository to the runner
+       uses: actions/checkout@v2
+
+     - name: Setup Terraform with specified version on the runner
+       uses: hashicorp/setup-terraform@v2
+       with:
+         terraform_version: 1.3.0
+
+     - name: Terraform init
+       # id: init
+       run: |
+         ls -la
+         ls ../../../../
+         ls ../../../../02_tmp/10_eks/aws
+         cp ../../../../02_tmp/10_eks/aws/01_variables.tf .
+         cp ../../../../02_tmp/10_eks/aws/03_main.tf .
+         sh scripts/script_del.sh
+         cp ../../../../03_pro/aws/02_provider.tf .
+         echo "LS"
+         ls -la
+
+       # cd ../../../..
+       # git clone https://github.com/maxxam123/platf04.git
+       # rm -rf platf04/.github/workflows/10_eks-02_aws_eks.yaml
+       # rm -rf platf04/01_infra/10_eks/aws/02_aws_eks
+       # rm -rf platf04/04_git/aws/02_aws_eks
+       # echo "LAST........................."
+
+         
+      # rm -rf platf04/.github/workflows/01_02_aws_eks.yaml
+     #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
+       
+     #- name: Terraform Plan
+     #  run: terraform plan -lock=false
+
+     #- name: Terraform Destroy
+     #  run: terraform destroy -auto-approve -input=false -lock=false
+     
+     # - name: Pushes to another repository
+     #   uses: cpina/github-action-push-to-another-repository@main
+     #   env:
+     #     API_TOKEN_GITHUB: ${{ secrets.NEWPLAT }}
+     #   with:
+     #     source-directory: "platf04"
+     #     destination-github-username: "maxxam123"
+     #     destination-repository-name: "platf04"
+     #     user-email: hennighausenmax@gmail.com
+     #     target-branch: main
