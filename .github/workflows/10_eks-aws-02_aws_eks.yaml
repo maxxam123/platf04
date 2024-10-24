@@ -1,0 +1,51 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - '01_infra/10_eks/aws/02_aws_eks/*'   #### 01_lambda == 10_eks
+
+env:
+ AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+ AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+
+jobs:
+ terraform:
+   name: "Terraform Infrastructure Change Management"
+   runs-on: ubuntu-latest
+   defaults:
+     run:
+       shell: bash
+       # We keep Terraform files in the terraform directory.
+       working-directory: 01_infra/10_eks/aws/02_aws_eks/  #### 01_lambda == 10_eks
+
+   steps:
+     - name: Checkout the repository to the runner
+       uses: actions/checkout@v2
+
+     - name: Setup Terraform with specified version on the runner
+       uses: hashicorp/setup-terraform@v2
+       with:
+         terraform_version: 1.3.0
+
+     - name: Terraform init
+       id: init
+       run: |
+         cp ../../../../02_tmp/10_eks/aws/main.tf .
+         cp ../../../../02_tmp/10_eks/aws/variables.tf .
+         cp ../../../../02_tmp/10_eks/aws/08_efs.tf .
+         cp ../../../../02_tmp/10_eks/aws/09_autoscaler.tf .
+         cp ../../../../02_tmp/10_eks/aws/10_secdriver.tf .
+         cp ../../../../03_pro/aws/02_provider.tf .
+         
+         echo "01_aws.TF"
+         cat 02_provider.tf
+         echo "TFVARS"
+         cat terraform.tfvars
+     #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
+       
+     #- name: Terraform Plan
+     #  run: terraform plan -lock=false
+
+     #- name: Terraform Apply
+     #  run: terraform apply -auto-approve -input=false -lock=false
