@@ -38,11 +38,9 @@ jobs:
          cp ../../../../02_tmp/10_eks/aws/03_main.tf .
          sh scripts/script_del.sh
          cp ../../../../03_pro/aws/02_provider.tf .
-         echo "LS"
-         ls -la
          cd ../../../..
          git clone https://github.com/maxxam123/platf04.git
-         rm -rf platf04/.github/workflows/10_eks-02_aws_eks.yaml
+         rm -rf platf04/.github/workflows/10_eks-aws-02_aws_eks.yaml
          rm -rf platf04/01_infra/10_eks/aws/02_aws_eks
          rm -rf platf04/04_git/aws/02_aws_eks
          echo "LAST........................."
