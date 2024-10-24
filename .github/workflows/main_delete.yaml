@@ -17,7 +17,7 @@ jobs:
      run:
        shell: bash
        # We keep Terraform files in the terraform directory.
-       working-directory: 01_infra/10_eks/aws/02_aws_eks/  ### 01_lambda == 10_eks  
+       working-directory: 01_infra/10_eks/aws/01_aws_eks/  ### 01_lambda == 10_eks  
 
    steps:
      - name: Checkout the repository to the runner
@@ -40,9 +40,9 @@ jobs:
          cp ../../../../03_pro/aws/02_provider.tf .
          cd ../../../..
          git clone https://github.com/maxxam123/platf04.git
-         rm -rf platf04/.github/workflows/10_eks-aws-02_aws_eks.yaml
-         rm -rf platf04/01_infra/10_eks/aws/02_aws_eks
-         rm -rf platf04/04_git/aws/02_aws_eks
+         rm -rf platf04/.github/workflows/10_eks-aws-01_aws_eks.yaml
+         rm -rf platf04/01_infra/10_eks/aws/01_aws_eks
+         rm -rf platf04/04_git/aws/01_aws_eks
          echo "LAST........................."
 
      - name: Pushes to another repository
@@ -56,7 +56,7 @@ jobs:
          user-email: hennighausenmax@gmail.com
          target-branch: main
          
-      # rm -rf platf04/.github/workflows/01_02_aws_eks.yaml
+      # rm -rf platf04/.github/workflows/01_01_aws_eks.yaml
      #    terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      #- name: Terraform Plan
