@@ -1,8 +1,8 @@
 provider "google" {
-  project     = "my-project-id"
-  region      = "us-central1"
-  project     = "my-project-id"
-  region      = "us-central1"
+  project     = var.project
+  region      = var.region
+#  project     = "my-project-id"
+#  region      = "us-central1"
 }
 
 terraform {
